@@ -1,0 +1,36 @@
+/* Colors in Palette - Netflix based
+Color     Hex	    RGB
+red       #db0000	(219,0,0) 
+black     #000000	(0,0,0)
+white     #ffffff	(255,255,255)
+gray      #564d4d	(86,77,77)
+dark red  #831010	(131,16,16) */
+
+.main{
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  overflow-y: hidden;
+  background-image: url("../public/img/netflix_cover4.jpg");
+  background-size: cover;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.reg_box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  background-color:rgba(0,0,0,0.8);
+  padding: 10%;
+  width: 30vw;
+  height: 80vh;
+}
+
