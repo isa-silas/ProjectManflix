@@ -3,6 +3,7 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Checkbox } from "primereact/checkbox";
 import axios from 'axios';
+// import styles from "./styles/Validation.module.css"
 
 
 
@@ -34,40 +35,19 @@ export default function Validation({ data, done}) {
         }));
     }
 
+    // function to do the POST at django
     function handleSubmit(event){
         const { name,idUser,email,phone,active} = formUser
         event.preventDefault();
-        axios.post("http://127.0.0.1:8000/users/",{
+        axios.post("http://127.0.0.1:8000/users/",[{
                     name:name,
                     idUser:idUser,
                     email: email,
                     phone: phone,
-                    active: active
-                }).then (res => console.log(res))
+                    active: active,
+                    signatureFK:1
+                }]).then (res => console.log(res))
                 .catch(err =>console.err(error));
-        
-        // switch(requestType){
-        //     case 'post':
-        //         axios.post("http://127.0.0.1:8000/users/",{
-        //             name:name,
-        //             idUser:idUser,
-        //             email: email,
-        //             phone: phone,
-        //             active: active
-        //         }).then (res => console.log(res))
-        //         .catch(err =>console.err(error));
-            
-        //     case 'put':
-        //         axios.put(`http://127.0.0.1:8000/users/${articleID}`,{
-        //             name:name,
-        //             idUser:idUser,
-        //             email: email,
-        //             phone: phone,
-        //             active: active
-        //         }).then (res => console.log(res))
-        //         .catch(err =>console.err(error));
-            
-        // }
         
     };
 
@@ -140,12 +120,11 @@ export default function Validation({ data, done}) {
 
             <Button
                 type="submit"
-                label=""
+                label="Submit"
                 className="mt-2 btnSbmt"
                 onClick={(event)=>handleSubmit(event)}
-            ></Button>
+            />
 
-            {/* <script src="./post.js"></script> */}
         </>
     );
 
