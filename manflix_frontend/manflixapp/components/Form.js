@@ -7,27 +7,32 @@ import CategoryValidation from './CategoryValidation';
 import styles from "../styles/Home.module.css"
 
 
-export default function Header({ data, done,page}) {
-    console.log(data)
+export default function Form({ data_sig, done,page}) {
+    console.log(data_sig)
 
-    
-        if(page === 1){ 
+    if(page===0){
+        return(
+            <div>
+                <h1>Choose what you want to register</h1>
+            </div>
+        )
+    }else if(page === 1){ 
             return(
                 <div className={styles.reg_box}>
-                    <Validation data = {data} done={done}></Validation>
+                    <Validation data = {data_sig} method={1} done={done}></Validation>
                 </div>
             )
             
         }else if(page === 2){
             return(
             <div className={styles.reg_box}>
-                <SignatureValidation data={data}/>
+                <SignatureValidation method={1} data={data_sig}/>
             </div>                
             )
         }else if(page === 3){
             return(
             <div className={styles.reg_box}>
-                <MoviesValidation/>
+                <MoviesValidation method={1}/>
             </div>                
             )
         }else if(page === 4){

@@ -31,6 +31,9 @@ export default function CategoryValidation(){
 
     return (
         <>
+            <div className="form_title">
+                <h2>Category</h2>
+            </div>
             <div className="field">
                 <span className="p-float-label">
                     <label htmlFor="in">Name*</label>
@@ -50,6 +53,13 @@ export default function CategoryValidation(){
                 className="mt-2 btnSbmt"
                 onClick={(event)=>handleSubmit(event)}
             />
+
+            <style jsx>{`
+                .field{
+                    padding:10%
+                }
+
+            `}</style>
             </>
         )
 

@@ -12,7 +12,7 @@ dark red  #831010	(131,16,16) */
   height: 100vh;
   max-height: 100vh;
   overflow-y: hidden;
-  background-image: url("../public/img/netflix_cover4.jpg");
+  background-image: url("../public/img/netflix_cover.jpg");
   background-size: cover;
 
   display: flex;
@@ -26,16 +26,18 @@ dark red  #831010	(131,16,16) */
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
   color: white;
-
+  border-radius:2%;
   background-color:rgba(0,0,0,0.8);
   padding: 10%;
   width: 30vw;
   height: 80vh;
+  margin-bottom: 5%;
 }
 
 .header{
-  background-color: #000;
+  background-color: none;
   color: #fff;
   width: 100%;
   height: 15%;
@@ -45,6 +47,18 @@ dark red  #831010	(131,16,16) */
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.topHeader{
+  width:100%;
+  display: flex;
+  flex-direction:row;
+  align-items: space-between;
+  justify-content: center;
+}
+
+.topHeader Button{
+  width:100%
 }
 
 
