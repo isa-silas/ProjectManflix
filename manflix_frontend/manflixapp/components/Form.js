@@ -8,7 +8,6 @@ import styles from "../styles/Home.module.css"
 
 
 export default function Form({ data_sig, done,page}) {
-    console.log(data_sig)
 
     if(page===0){
         return(

@@ -6,13 +6,13 @@ import axios from 'axios';
 
 
 export default function SignatureValidation({data,method}){
+    const [allSigs, setAllSigs] = useState([]);
     const [selectedSig, setSelectedSig] = useState();
     
     const [formSig, setFormSig] = useState({
         name: "",
         value:0.0
     });
-    const [allSigs,setAllSigs] = useEffect([]);
     
     useEffect(async ()=>{
         const response = await fetch(`http://127.0.0.1:8000/signature/`)
@@ -43,7 +43,7 @@ export default function SignatureValidation({data,method}){
     };
     function handleSubmitDel(event){
         event.preventDefault();
-        console.log(selectedSig.id)
+        // console.log(selectedSig.id)
         axios.delete(`http://127.0.0.1:8000/signature/${selectedSig.id}`)
         .then (res => console.log(res))
         .catch(err =>console.err(error));

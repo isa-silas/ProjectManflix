@@ -11,7 +11,7 @@ export default function Validation({ data, done,method}) {
     // console.log('data :>> ', data);
     // console.log('done :>> ', done);
     const[allUsers,setAllUsers] = useState([])
-    const [selectedUser,setSelectedUser] = useState()
+    const [selectedUser,setSelectedUser] = useState([])
     const [formUser, setFormUser] = useState({
         name: "",
         idUser: "",
@@ -20,16 +20,27 @@ export default function Validation({ data, done,method}) {
         active: false
     });
 
-    const [selectedSignature,setSelectedSig] = useState();
+    const [selectedSignature,setSelectedSig] = useState([]);
+    const [allSigs,setAllSigs] = useState([]);
 
     useEffect(async ()=>{
         const response = await fetch(`http://127.0.0.1:8000/users/`)
         const data = await response.json()
         console.log(data)
         setAllUsers(data);
+
+        const response2 = await fetch(`http://127.0.0.1:8000/signature/`)
+        const data2 = await response2.json()
+        console.log(data2)
+        setAllSigs(data2);
     
       },[]
       )
+    // useEffect(async ()=>{
+        
+    
+    //   },[]
+    //   )
 
     function handleForm(event) {
         const { name, value } = event.target;
@@ -47,9 +58,14 @@ export default function Validation({ data, done,method}) {
         }));
     }
 
+
+
     // function to do the POST at django
     function handleSubmit(event){
         const { name,idUser,email,phone,active} = formUser
+        const idSig = selectedSignature
+        const all = allSigs
+        console.log("selectedSig: ",idSig)
         event.preventDefault();
         axios.post("http://127.0.0.1:8000/users/",[{
                     name:name,
@@ -57,7 +73,7 @@ export default function Validation({ data, done,method}) {
                     email: email,
                     phone: phone,
                     active: active,
-                    signatureFK:1
+                    signatureFK:idSig
                 }]).then (res => console.log(res))
                 .catch(err =>console.err(error));
         
@@ -137,7 +153,8 @@ export default function Validation({ data, done,method}) {
                             id="signature"
                             name="signature"
                             optionLabel = "name"
-                            options={data}
+                            optionValue="id"
+                            options={allSigs}
                             value={selectedSignature}
                             onChange={(e)=>setSelectedSig(e.value)}
                         />
