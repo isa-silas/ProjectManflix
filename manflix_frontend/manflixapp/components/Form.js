@@ -11,7 +11,7 @@ export default function Form({ data_sig, done,page}) {
 
     if(page===0){
         return(
-            <div>
+            <div className={styles.reg_box}>
                 <h1>Choose what you want to register</h1>
             </div>
         )
@@ -37,7 +37,7 @@ export default function Form({ data_sig, done,page}) {
         }else if(page === 4){
             return(
             <div className={styles.reg_box}>
-                <CategoryValidation/>
+                <CategoryValidation method={1}/>
             </div>                
             )
         }

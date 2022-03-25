@@ -47,6 +47,7 @@ export default function SignatureValidation({data,method}){
         axios.delete(`http://127.0.0.1:8000/signature/${selectedSig.id}`)
         .then (res => console.log(res))
         .catch(err =>console.err(error));
+        window.alert("Deleted")
         
     };
 
@@ -100,6 +101,9 @@ export default function SignatureValidation({data,method}){
     }else if(method === 2){
         return (
             <>
+                <div className="form_title">
+                    <h1>Signature</h1>
+                </div>
                 <div className="field">
                     <span className="p-float-label">
                         <label htmlFor="movies">Movie</label>

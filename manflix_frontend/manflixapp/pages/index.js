@@ -17,6 +17,11 @@ export default function Home({data_sig,data_movies,done}) {
       {/* <img src="img/logo_manflix.png"/> */}
       <Button
       className="p-button-danger p-button-text"
+      label = "Home"
+      onClick={()=>setActionOpt(0)}
+      />
+      <Button
+      className="p-button-danger p-button-text"
       label = "List of Movies"
       onClick={()=>setActionOpt(1)}
       />

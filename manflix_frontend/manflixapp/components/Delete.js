@@ -36,36 +36,9 @@ export default function Delete({ data_sig,data_movies, done,page=0}) {
     }else if(page===4){
         return(
             <div className={styles.reg_box}>
-                {/* <MoviesValidation method={2} data_movies={data_movies}/> */}
+                <CategoryValidation method={2}/>
             </div>                
             )
     }
-    
-        // if(page === 1){ 
-        //     return(
-        //         <div className={styles.reg_box}>
-        //             <Validation data = {data_sig} done={done}></Validation>
-        //         </div>
-        //     )
-            
-        // }else if(page === 2){
-        //     return(
-        //     <div className={styles.reg_box}>
-        //         <SignatureValidation data={data_sig}/>
-        //     </div>                
-        //     )
-        // }else if(page === 3){
-        //     return(
-        //     <div className={styles.reg_box}>
-        //         <MoviesValidation method={2} data_movies={data_movies}/>
-        //     </div>                
-        //     )
-        // }else if(page === 4){
-        //     return(
-        //     <div className={styles.reg_box}>
-        //         <CategoryValidation/>
-        //     </div>                
-        //     )
-        // }
 
 }

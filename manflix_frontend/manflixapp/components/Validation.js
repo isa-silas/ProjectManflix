@@ -76,7 +76,7 @@ export default function Validation({ data, done,method}) {
                     signatureFK:idSig
                 }]).then (res => console.log(res))
                 .catch(err =>console.err(error));
-        
+        window.alert("Registered")
     };
     function handleSubmitDel(event){
         event.preventDefault();
@@ -84,6 +84,7 @@ export default function Validation({ data, done,method}) {
         axios.delete(`http://127.0.0.1:8000/users/${selectedUser.id}`)
         .then (res => console.log(res))
         .catch(err =>console.err(error));
+        window.alert("Deleted")
         
     };
 
@@ -200,6 +201,9 @@ export default function Validation({ data, done,method}) {
     }else if(method ===2){
         return(
             <>
+                 <div className="form_title">
+                    <h1>Users</h1>
+                </div>
                 <div className="field">
                     <span className="p-float-label">
                         <label htmlFor="users">users</label>
