@@ -15,7 +15,7 @@ export default function Menu({ data_sig, data_movies, done, opt }) {
       <>
         <div className={styles.home}>
             <h1 className={styles.title}>Welcome to Manflix!</h1>
-            <h3 className={styles.title}>Don't waste your time looking for movies thaks to our the small collection</h3>
+            <h3 className={styles.title}>Don't waste your time looking for movies thaks to our small collection</h3>
         </div>
       </>
     );
@@ -36,8 +36,9 @@ export default function Menu({ data_sig, data_movies, done, opt }) {
   } else if (opt == 1) {
     return (
       <>
-      <div className={styles.list_movies_page}>
-        <div className={styles.listbox_container}>
+      <div className={styles.carousel}>
+        {/* Another option to show the movies */}
+        {/* <div className={styles.listbox_container}>
           <span className="p-listbox">
             <ListBox
               value={movie}
@@ -46,10 +47,10 @@ export default function Menu({ data_sig, data_movies, done, opt }) {
               onChange={(e) => setMovie(e.value)}
             />
           </span>
-        </div>
+        </div> */}
+        <MoviesCarousel data_movies={data_movies}></MoviesCarousel>
       </div>
 
-      <MoviesCarousel data_movies={data_movies}></MoviesCarousel>
       </>
     );
   } else if (opt == 3) {

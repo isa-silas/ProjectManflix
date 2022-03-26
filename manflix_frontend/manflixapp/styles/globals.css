@@ -56,6 +56,41 @@ a {
   background-color:blue;
 }
 
+.p-carousel-container {
+  display: flex;
+  flex-direction: row;
+  height: 70vh;
+  width:90vw;
+  background-color: transparent;
+  color: #fff
+}
+
+.p-button.p-button-success, .p-buttonset.p-button-success > .p-button, .p-splitbutton.p-button-success > .p-button, .p-fileupload-choose.p-button-success {
+  color: #686e68;
+  background: rgba(0,0,0,0.8);
+  border: none;
+}
+
+.mb-3{
+  width: 40%;
+  height: 40%;
+  /* background: #444; */
+  /* margin: 0 auto; */
+}
+.mb-3 img.wide{
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+}
+.mb-3 img.tall{
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+}
+.movie-item{
+  max-width: 50%;
+}
+
 
 
 

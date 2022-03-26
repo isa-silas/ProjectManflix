@@ -11,7 +11,7 @@ export default function Delete({ data_sig,data_movies, done,page=0}) {
     console.log(data_movies)
     if(page===0){
         return(
-            <div>
+            <div className={styles.reg_box}>
                 <h1>Choose what you want to delete</h1>
             </div>
         )

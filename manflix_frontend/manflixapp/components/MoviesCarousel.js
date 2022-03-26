@@ -6,11 +6,13 @@ export default function MoviesCarousel({ data_movies }) {
   const [allMovies, setAllMovies] = useState([]);
 
   function movieTemplate(movie) {
+    const source = movie.img 
+    console.log(movie)
     return (
-        <div className="product-item">
-            <div className="product-item-content">
+        <div className="movie-item">
+            <div className="movie-item-content">
                 <div className="mb-3">
-                    <img src={`HTTP://localhost:8000/movies/${movie.id}`} className="product-image" />
+                    <img src={source} />
                 </div>
                 <div>
                     <h4 className="mb-1">{movie.name}</h4>
@@ -32,7 +34,7 @@ export default function MoviesCarousel({ data_movies }) {
         // responsiveOptions={this.responsiveOptions}
         className="custom-carousel"
         circular
-        autoplayInterval={3000}
+        autoplayInterval={4500}
         itemTemplate={movieTemplate}
         header={<h5>Carousel header</h5>}
       />

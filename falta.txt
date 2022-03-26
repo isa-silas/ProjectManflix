@@ -1,0 +1,1 @@
+Falta arrumar o btn do check active e fazer a função de favoritar
