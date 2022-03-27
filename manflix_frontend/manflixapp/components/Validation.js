@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import { Checkbox } from "primereact/checkbox";
 import { Dropdown } from "primereact/dropdown";
 import axios from 'axios';
 
@@ -17,10 +16,9 @@ export default function Validation({ data, done,method}) {
         idUser: "",
         email: "",
         phone: "",
-        active: false
     });
 
-    const [selectedSignature,setSelectedSig] = useState([]);
+    const [selectedSignature,setSelectedSig] = useState();
     const [allSigs,setAllSigs] = useState([]);
 
     useEffect(async ()=>{
@@ -36,13 +34,9 @@ export default function Validation({ data, done,method}) {
     
       },[]
       )
-    // useEffect(async ()=>{
-        
-    
-    //   },[]
-    //   )
 
     function handleForm(event) {
+        console.log(event)
         const { name, value } = event.target;
         setFormUser((prevState) => ({
             ...prevState,
@@ -50,37 +44,25 @@ export default function Validation({ data, done,method}) {
         }));
     }
 
-    function handleCheck(event) {
-        const { checkbox, value } = event.target;
-        setFormUser((prevState) => ({
-            ...prevState,
-            [checkbox]: value,
-        }));
-    }
-
-
-
     // function to do the POST at django
     function handleSubmit(event){
-        const { name,idUser,email,phone,active} = formUser
-        const idSig = selectedSignature
-        const all = allSigs
-        console.log("selectedSig: ",idSig)
+        const { name,idUser,email,phone} = formUser
+        const selectedSig = selectedSignature
         event.preventDefault();
         axios.post("http://127.0.0.1:8000/users/",[{
                     name:name,
                     idUser:idUser,
                     email: email,
                     phone: phone,
-                    active: active,
-                    signatureFK:idSig
+                    signatureFK:selectedSig
                 }]).then (res => console.log(res))
                 .catch(err =>console.err(error));
         window.alert("Registered")
     };
+    
+    // function to do the DELETE at django
     function handleSubmitDel(event){
         event.preventDefault();
-        // console.log(selectedUser.id)
         axios.delete(`http://127.0.0.1:8000/users/${selectedUser.id}`)
         .then (res => console.log(res))
         .catch(err =>console.err(error));
@@ -92,14 +74,14 @@ export default function Validation({ data, done,method}) {
         return (
             <>
                 <div className="form_title">
-                    <h2>Users</h2>
+                    <h2>User</h2>
                 </div>
                 <div className="field">
-                    <span className="p-float-label">
-                        <label htmlFor="in">Name*</label>
+                    <span >
                         <InputText
                             id="name"
                             name="name"
+                            placeholder="Name*"
                             value={formUser.name}
                             onChange={handleForm}
                             autoFocus
@@ -108,11 +90,11 @@ export default function Validation({ data, done,method}) {
                 </div>
     
                 <div className="field">
-                    <span className="p-float-label">
-                        <label htmlFor="in">User ID*</label>
+                    <span >
                         <InputText
                             id="idUser"
                             name="idUser"
+                            placeholder="How we should call you*"
                             value={formUser.idUser}
                             onChange={handleForm}
                             autoFocus
@@ -122,11 +104,11 @@ export default function Validation({ data, done,method}) {
     
                 {/* email field */}
                 <div className="field">
-                    <span className="p-float-label p-input-icon-right">
-                        <label htmlFor="email">Email*</label>
+                    <span>
                         <InputText
                             id="email"
                             name="email"
+                            placeholder="Email*"
                             value={formUser.email}
                             onChange={handleForm}
                         />
@@ -135,11 +117,11 @@ export default function Validation({ data, done,method}) {
     
                 {/* phone field */}
                 <div className="field">
-                    <span className="p-float-label">
-                        <label htmlFor="phone">Phone*</label>
+                    <span>
                         <InputText
                             id="phone"
                             name="phone"
+                            placeholder="Phone*"
                             value={formUser.phone}
                             onChange={handleForm}
                         />
@@ -148,11 +130,11 @@ export default function Validation({ data, done,method}) {
     
     
                 <div className="field">
-                    <span className="p-float-label">
-                        <label htmlFor="signature">Signature*</label>
+                    <span >
                         <Dropdown
                             id="signature"
                             name="signature"
+                            placeholder="Signature"
                             optionLabel = "name"
                             optionValue="id"
                             options={allSigs}
@@ -160,17 +142,6 @@ export default function Validation({ data, done,method}) {
                             onChange={(e)=>setSelectedSig(e.value)}
                         />
                     </span>
-                </div>
-                <div className="field_check">
-                    {/* <span className="p-float-label"> */}
-                    <label htmlFor="active">Active</label>
-                        <Checkbox
-                            id="active"
-                            name="active"
-                            value={formUser.active}
-                            onClick={handleCheck}
-                        />
-                    {/* </span> */}
                 </div>
                 
     
@@ -205,8 +176,7 @@ export default function Validation({ data, done,method}) {
                     <h1>Users</h1>
                 </div>
                 <div className="field">
-                    <span className="p-float-label">
-                        <label htmlFor="users">users</label>
+                    <span >
                         <Dropdown
                         id = "users"
                         name = "users"
@@ -220,7 +190,7 @@ export default function Validation({ data, done,method}) {
     
                 <Button
                     type="submit"
-                    label="Submit"
+                    label="Delete"
                     className="mt-2 btnSbmt"
                     onClick={(event)=>handleSubmitDel(event)}
                 />

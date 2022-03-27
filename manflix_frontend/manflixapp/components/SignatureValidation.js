@@ -11,7 +11,7 @@ export default function SignatureValidation({data,method}){
     
     const [formSig, setFormSig] = useState({
         name: "",
-        value:0.0
+        value:""
     });
     
     useEffect(async ()=>{
@@ -58,11 +58,11 @@ export default function SignatureValidation({data,method}){
                     <h2>Signature</h2>
                 </div>
                 <div className="field">
-                    <span className="p-float-label">
-                        <label htmlFor="in">Signature Name*</label>
+                    <span >
                         <InputText
                             id="name"
                             name="name"
+                            placeholder="Signature name*"
                             value={formSig.name}
                             onChange={handleForm}
                             autoFocus
@@ -71,11 +71,12 @@ export default function SignatureValidation({data,method}){
                 </div>
     
                 <div className="field">
-                    <span className="p-float-label">
-                        <label htmlFor="in">Value(R$)*</label>
+                    <span >
+
                         <InputText
                             id="value"
                             name="value"
+                            placeholder="Value(R$)*"
                             value={formSig.value}
                             onChange={handleForm}
                             autoFocus
@@ -105,8 +106,7 @@ export default function SignatureValidation({data,method}){
                     <h1>Signature</h1>
                 </div>
                 <div className="field">
-                    <span className="p-float-label">
-                        <label htmlFor="movies">Movie</label>
+                    <span >
                         <Dropdown
                         id = "movies"
                         name = "movies"
@@ -120,7 +120,7 @@ export default function SignatureValidation({data,method}){
     
                 <Button
                     type="submit"
-                    label="Submit"
+                    label="Delete"
                     className="mt-2 btnSbmt"
                     onClick={(event)=>handleSubmitDel(event)}
                 />

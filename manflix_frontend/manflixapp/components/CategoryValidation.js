@@ -55,11 +55,11 @@ export default function CategoryValidation({method}){
                     <h2>Category</h2>
                 </div>
                 <div className="field">
-                    <span className="p-float-label">
-                        <label htmlFor="in">Name*</label>
+                    <span >
                         <InputText
                             id="name"
                             name="name"
+                            placeholder="Name*"
                             value={formCat.name}
                             onChange={handleForm}
                             autoFocus
@@ -89,8 +89,7 @@ export default function CategoryValidation({method}){
                     <h1>Categories</h1>
                 </div>
                 <div className="field">
-                    <span className="p-float-label">
-                        <label htmlFor="users">users</label>
+                    <span >
                         <Dropdown
                         id = "categories"
                         name = "categories"
@@ -104,7 +103,7 @@ export default function CategoryValidation({method}){
     
                 <Button
                     type="submit"
-                    label="Submit"
+                    label="Delete"
                     className="mt-2 btnSbmt"
                     onClick={(event)=>handleSubmitDel(event)}
                 />

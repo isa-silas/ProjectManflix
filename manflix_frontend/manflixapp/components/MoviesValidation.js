@@ -45,7 +45,7 @@ export default function MoviesValidation({method,data_movies}){
     function handleSubmit(event){
         const {name,img} = formMov
         const idCat = selectedCat
-        console.log(idCat)
+        // console.log(idCat)
         event.preventDefault();
         axios.post("http://127.0.0.1:8000/movies/",[{
                     name:name,
@@ -59,7 +59,7 @@ export default function MoviesValidation({method,data_movies}){
     // function to do the DELETE at django
     function handleSubmitDel(event){
         event.preventDefault();
-        console.log(selectedMovie.id)
+        // console.log(selectedMovie.id)
         axios.delete(`http://127.0.0.1:8000/movies/${selectedMovie.id}`)
         .then (res => console.log(res))
         .catch(err =>console.err(error));
@@ -72,11 +72,11 @@ export default function MoviesValidation({method,data_movies}){
                     <h2>Movies</h2>
                 </div>
                 <div className="field">
-                    <span className="p-float-label">
-                        <label htmlFor="in">Title*</label>
+                    <span>
                         <InputText
                             id="name"
                             name="name"
+                            placeholder="Title*"
                             value={formMov.name}
                             onChange={handleForm}
                             autoFocus
@@ -85,11 +85,11 @@ export default function MoviesValidation({method,data_movies}){
                 </div>
 
                 <div className="field">
-                    <span className="p-float-label">
-                        <label htmlFor="img">Image (internet link)</label>
+                    <span>
                         <InputText
                             id="img"
                             name="img"
+                            placeholder="Image (internet link)"
                             value={formMov.img}
                             onChange={handleForm}
                             autoFocus
@@ -98,11 +98,11 @@ export default function MoviesValidation({method,data_movies}){
                 </div>
 
                 <div className="field">
-                    <span className="p-float-label">
-                        <label htmlFor="categories">users</label>
+                    <span>
                         <Dropdown
                         id = "categories"
                         name = "categories"
+                        placeholder = "Category*"
                         optionLabel="name"
                         optionValue="id"
                         options={allCats}
@@ -137,8 +137,7 @@ export default function MoviesValidation({method,data_movies}){
                     <h1>Movies</h1>
                 </div>
                 <div className="field">
-                    <span className="p-float-label">
-                        <label htmlFor="movies">Movie</label>
+                    <span>
                         <Dropdown
                         id = "movies"
                         name = "movies"
@@ -152,7 +151,7 @@ export default function MoviesValidation({method,data_movies}){
     
                 <Button
                     type="submit"
-                    label="Submit"
+                    label="Delete"
                     className="mt-2 btnSbmt"
                     onClick={(event)=>handleSubmitDel(event)}
                 />
