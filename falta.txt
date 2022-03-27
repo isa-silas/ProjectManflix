@@ -1,6 +1,0 @@
-Falta arrumar o btn do check active e fazer a função de favoritar
-
-------------------------------------------
-1) Arrumar bug css register (margin top) -> ok
-2) Bug active -> ok
-3)Botão Favoritar
